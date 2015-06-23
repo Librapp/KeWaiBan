@@ -14,4 +14,33 @@ public class Shop {
 	public int id;
 	@DatabaseField
 	public String name;
+	@DatabaseField
+	public String address;
+	@DatabaseField
+	public String info;
+	@DatabaseField
+	public String mark;
+	@DatabaseField
+	public String lon;
+	@DatabaseField
+	public String lat;
+	@DatabaseField
+	public String pic;
+	@DatabaseField
+	public String type;
+	@DatabaseField
+	public String email;
+	@DatabaseField
+	public String phone;
+	@DatabaseField
+	public String foundcondition;
+	@DatabaseField
+	public String tab;
+	@DatabaseField
+	public String province;
+	@DatabaseField
+	public String city;
+	@DatabaseField
+	public String district;
+
 }

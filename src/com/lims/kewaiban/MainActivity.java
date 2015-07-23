@@ -1,64 +1,154 @@
 package com.lims.kewaiban;
 
-import android.app.Activity;
-import android.app.ActionBar;
-import android.app.Fragment;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTabHost;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
-import android.view.ViewGroup;
-import android.os.Build;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import de.greenrobot.event.EventBus;
 
+public class MainActivity extends FragmentActivity implements
+		OnCheckedChangeListener {
+	private FragmentTabHost mTabHost;
+	private RadioGroup radioGroup;
 
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.main_activity);
+		if (savedInstanceState == null) {
+			// getFragmentManager().beginTransaction()
+			// .add(R.id.container, new PlaceholderFragment()).commit();
+		}
+		EventBus.getDefault().register(this);
+		InitView();
+	}
 
-public class MainActivity extends Activity {
+	private void InitView() {
+		mTabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
+		mTabHost.setup(this, getSupportFragmentManager(), R.id.realtabcontent);
+		mTabHost.getTabWidget().setVisibility(View.GONE); // 隐藏系统的TabWidget
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_activity);
-        if (savedInstanceState == null) {
-            getFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
-                    .commit();
-        }
-    }
+		// mTabHost.addTab(mTabHost.newTabSpec("monitor").setIndicator("Home"),
+		// QLJ_Monitor_Fragment.class, null);
+		//
+		// mTabHost.addTab(mTabHost.newTabSpec("index").setIndicator("Message"),
+		// QLJ_Index_Fragment.class, null);
+		//
+		// mTabHost.addTab(
+		// mTabHost.newTabSpec("solution").setIndicator("Profile"),
+		// QLJ_Solution_Fragment.class, null);
+		//
+		// mTabHost.addTab(mTabHost.newTabSpec("expert").setIndicator("Square"),
+		// QLJ_Expert_Online_Fragment.class, null);
+		//
+		// mTabHost.addTab(mTabHost.newTabSpec("query").setIndicator("More"),
+		// QLJ_Query_Fragment.class, null);
+		//
+		// mTabHost.addTab(mTabHost.newTabSpec("more").setIndicator("More"),
+		// QLJ_More_Fragment.class, null);
 
+		// mTabHost.setOnTabChangedListener(this);
+		mTabHost.setCurrentTabByTag("index");
+		((RadioButton) findViewById(R.id.radio_index)).setChecked(true);
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
+		radioGroup = (RadioGroup) findViewById(R.id.radiogroup);
+		radioGroup.setOnCheckedChangeListener(this);
+	}
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+	@Override
+	public void onCheckedChanged(RadioGroup group, int checkedId) {
+		FragmentManager fm = getSupportFragmentManager();
+		// QLJ_Index_Fragment index = (QLJ_Index_Fragment) fm
+		// .findFragmentByTag("index");
+		// QLJ_Monitor_Fragment monitor = (QLJ_Monitor_Fragment) fm
+		// .findFragmentByTag("monitor");
+		// QLJ_Solution_Fragment solution = (QLJ_Solution_Fragment) fm
+		// .findFragmentByTag("solution");
+		// QLJ_Expert_Online_Fragment expert = (QLJ_Expert_Online_Fragment) fm
+		// .findFragmentByTag("expert");
+		// QLJ_Query_Fragment query = (QLJ_Query_Fragment) fm
+		// .findFragmentByTag("query");
+		// QLJ_More_Fragment more = (QLJ_More_Fragment) fm
+		// .findFragmentByTag("more");
 
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
+		FragmentTransaction ft = fm.beginTransaction();
 
-        public PlaceholderFragment() {
-        }
+		// ** Detaches the androidfragment if exists */
+		// if (index != null)
+		// ft.detach(index);
+		// if (monitor != null)
+		// ft.detach(monitor);
+		// if (solution != null)
+		// ft.detach(solution);
+		// if (expert != null)
+		// ft.detach(expert);
+		// if (query != null)
+		// ft.detach(query);
+		// if (more != null)
+		// ft.detach(more);
 
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.main_fragment, container, false);
-            return rootView;
-        }
-    }
+		switch (checkedId) {
+		case R.id.radio_index:
+			if (index == null) {
+				ft.add(R.id.realtabcontent, new QLJ_Index_Fragment(), "index");
+			} else {
+				ft.attach(index);
+			}
+			mTabHost.setCurrentTabByTag("index");
+			break;
+		case R.id.radio_monotor:
+			if (monitor == null) {
+				ft.add(R.id.realtabcontent, new QLJ_Monitor_Fragment(),
+						"monitor");
+			} else {
+				ft.attach(monitor);
+			}
+			mTabHost.setCurrentTabByTag("monitor");
+			break;
+		case R.id.radio_solution:
+			if (solution == null) {
+				ft.add(R.id.realtabcontent, new QLJ_Solution_Fragment(),
+						"solution");
+			} else {
+				ft.attach(solution);
+			}
+			mTabHost.setCurrentTabByTag("solution");
+			break;
+		case R.id.radio_expertOnline:
+			if (expert == null) {
+				ft.add(R.id.realtabcontent, new QLJ_Query_Fragment(), "expert");
+			} else {
+				ft.attach(expert);
+			}
+			mTabHost.setCurrentTabByTag("expert");
+			break;
+		case R.id.radio_query:
+			if (query == null) {
+				ft.add(R.id.realtabcontent, new QLJ_Query_Fragment(), "query");
+			} else {
+				ft.attach(query);
+			}
+			mTabHost.setCurrentTabByTag("query");
+			break;
+		case R.id.radio_more:
+			if (more == null) {
+				ft.add(R.id.realtabcontent, new QLJ_More_Fragment(), "more");
+			} else {
+				ft.attach(more);
+			}
+			mTabHost.setCurrentTabByTag("more");
+			break;
+		}
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		EventBus.getDefault().unregister(this);// 反注册EventBus
+	}
 }

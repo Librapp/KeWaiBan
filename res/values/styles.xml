@@ -9,14 +9,12 @@
     <style name="maintabt">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:textSize">10dp</item>
+        <item name="android:textSize">12sp</item>
         <item name="android:gravity">center_horizontal</item>
         <item name="android:layout_weight">1.0</item>
         <item name="android:paddingTop">5dp</item>
         <item name="android:button">@null</item>
         <item name="android:layout_gravity">center_horizontal</item>
         <item name="android:singleLine">true</item>
-        <item name="android:textColor">@drawable/tab_textcolor</item>
-        <item name="android:background">@drawable/itembg</item>
     </style>
 </resources>

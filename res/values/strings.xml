@@ -21,4 +21,9 @@
     <string name="total_count">全部数量</string>
     <string name="youeryuan">幼儿园</string>
     <string name="zaojiao">早教</string>
+    <string name="news">资讯</string>
+    <string name="lessons">课程</string>
+    <string name="schools">学校</string>
+    <string name="self">我</string>
+    <string name="agent">机构</string>
 </resources>

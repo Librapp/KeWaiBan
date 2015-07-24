@@ -13,17 +13,17 @@
             android:layout_weight="1" />
         <TabWidget
             android:id="@android:id/tabs"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.0"
             android:visibility="gone" />
         <RelativeLayout
             android:id="@+id/layout_bottom"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content" >
             <RadioGroup
                 android:id="@+id/radiogroup"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:background="@drawable/header_more_list"
@@ -33,32 +33,27 @@
                     android:id="@+id/radio_index"
                     style="@style/maintabt"
                     android:drawableTop="@drawable/icon_1_n"
-                    android:text="首页" />
+                    android:text="@string/news" />
                 <RadioButton
                     android:id="@+id/radio_monotor"
                     style="@style/maintabt"
                     android:drawableTop="@drawable/icon_0_n"
-                    android:text="实时监控" />
+                    android:text="@string/lessons" />
                 <RadioButton
                     android:id="@+id/radio_solution"
                     style="@style/maintabt"
                     android:drawableTop="@drawable/icon_2_n"
-                    android:text="在线解答" />
+                    android:text="@string/agent" />
                 <RadioButton
                     android:id="@+id/radio_expertOnline"
                     style="@style/maintabt"
                     android:drawableTop="@drawable/icon_3_n"
-                    android:text="专家在线" />
+                    android:text="@string/schools" />
                 <RadioButton
                     android:id="@+id/radio_query"
                     style="@style/maintabt"
                     android:drawableTop="@drawable/icon_4_n"
-                    android:text="搜索" />
-                <RadioButton
-                    android:id="@+id/radio_more"
-                    style="@style/maintabt"
-                    android:drawableTop="@drawable/icon_5_n"
-                    android:text="更多" />
+                    android:text="@string/self" />
             </RadioGroup>
         </RelativeLayout>
     </LinearLayout>

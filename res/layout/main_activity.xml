@@ -6,6 +6,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical" >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+            <SearchView
+                android:id="@+id/sv_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center_vertical" />
+        </LinearLayout>
         <FrameLayout
             android:id="@+id/realtabcontent"
             android:layout_width="match_parent"
@@ -17,44 +27,39 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.0"
             android:visibility="gone" />
-        <RelativeLayout
-            android:id="@+id/layout_bottom"
+        <RadioGroup
+            android:id="@+id/radiogroup"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-            <RadioGroup
-                android:id="@+id/radiogroup"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:background="@drawable/header_more_list"
-                android:gravity="center_vertical"
-                android:orientation="horizontal" >
-                <RadioButton
-                    android:id="@+id/radio_index"
-                    style="@style/maintabt"
-                    android:drawableTop="@drawable/icon_1_n"
-                    android:text="@string/news" />
-                <RadioButton
-                    android:id="@+id/radio_monotor"
-                    style="@style/maintabt"
-                    android:drawableTop="@drawable/icon_0_n"
-                    android:text="@string/lessons" />
-                <RadioButton
-                    android:id="@+id/radio_solution"
-                    style="@style/maintabt"
-                    android:drawableTop="@drawable/icon_2_n"
-                    android:text="@string/agent" />
-                <RadioButton
-                    android:id="@+id/radio_expertOnline"
-                    style="@style/maintabt"
-                    android:drawableTop="@drawable/icon_3_n"
-                    android:text="@string/schools" />
-                <RadioButton
-                    android:id="@+id/radio_query"
-                    style="@style/maintabt"
-                    android:drawableTop="@drawable/icon_4_n"
-                    android:text="@string/self" />
-            </RadioGroup>
-        </RelativeLayout>
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@drawable/header_more_list"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+            <RadioButton
+                android:id="@+id/rb_news"
+                style="@style/maintabt"
+                android:drawableTop="@drawable/icon_1_n"
+                android:text="@string/news" />
+            <RadioButton
+                android:id="@+id/rb_lessons"
+                style="@style/maintabt"
+                android:drawableTop="@drawable/icon_0_n"
+                android:text="@string/lessons" />
+            <RadioButton
+                android:id="@+id/rb_agent"
+                style="@style/maintabt"
+                android:drawableTop="@drawable/icon_2_n"
+                android:text="@string/agent" />
+            <RadioButton
+                android:id="@+id/rb_schools"
+                style="@style/maintabt"
+                android:drawableTop="@drawable/icon_3_n"
+                android:text="@string/schools" />
+            <RadioButton
+                android:id="@+id/rb_self"
+                style="@style/maintabt"
+                android:drawableTop="@drawable/icon_4_n"
+                android:text="@string/self" />
+        </RadioGroup>
     </LinearLayout>
 </android.support.v4.app.FragmentTabHost>

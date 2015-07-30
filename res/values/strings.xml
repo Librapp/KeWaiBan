@@ -26,4 +26,12 @@
     <string name="schools">学校</string>
     <string name="self">我</string>
     <string name="agent">机构</string>
+    <string-array name="category">
+        <item>幼升小</item>
+        <item>小升初</item>
+        <item>中考</item>
+        <item>高考</item>
+        <item>考研</item>
+    </string-array>
+    <string name="empty">空空如也</string>
 </resources>

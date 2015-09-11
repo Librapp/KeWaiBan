@@ -19,8 +19,6 @@ import com.lims.kewaiban.fragment.NewsFragment;
 import com.lims.kewaiban.fragment.SchoolsFragment;
 import com.lims.kewaiban.fragment.SelfFragment;
 
-import de.greenrobot.event.EventBus;
-
 public class MainActivity extends FragmentActivity implements
 		OnCheckedChangeListener, OnClickListener {
 	private FragmentTabHost mTabHost;
@@ -35,7 +33,7 @@ public class MainActivity extends FragmentActivity implements
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.realtabcontent, new NewsFragment()).commit();
 		}
-		EventBus.getDefault().register(this);
+		// EventBus.getDefault().register(this);
 		InitView();
 	}
 
@@ -46,19 +44,19 @@ public class MainActivity extends FragmentActivity implements
 		mTabHost.setup(this, getSupportFragmentManager(), R.id.realtabcontent);
 		mTabHost.getTabWidget().setVisibility(View.GONE); // 隐藏系统的TabWidget
 
-		mTabHost.addTab(mTabHost.newTabSpec("news").setIndicator("News"),
+		mTabHost.addTab(mTabHost.newTabSpec("news").setIndicator("资讯"),
 				NewsFragment.class, null);
 
-		mTabHost.addTab(mTabHost.newTabSpec("lessons").setIndicator("Lessons"),
+		mTabHost.addTab(mTabHost.newTabSpec("lessons").setIndicator("课程"),
 				LessonsFragment.class, null);
 
-		mTabHost.addTab(mTabHost.newTabSpec("agent").setIndicator("Agent"),
+		mTabHost.addTab(mTabHost.newTabSpec("agent").setIndicator("机构"),
 				AgentFragment.class, null);
 
-		mTabHost.addTab(mTabHost.newTabSpec("schools").setIndicator("Schools"),
+		mTabHost.addTab(mTabHost.newTabSpec("schools").setIndicator("学校"),
 				SchoolsFragment.class, null);
 
-		mTabHost.addTab(mTabHost.newTabSpec("self").setIndicator("Self"),
+		mTabHost.addTab(mTabHost.newTabSpec("self").setIndicator("个人中心"),
 				SelfFragment.class, null);
 
 		mTabHost.setCurrentTabByTag("news");
@@ -92,7 +90,7 @@ public class MainActivity extends FragmentActivity implements
 			ft.detach(schools);
 		if (self != null)
 			ft.detach(self);
-
+		// EventBus.getDefault().post(null);
 		switch (checkedId) {
 		case R.id.rb_news:
 			if (news == null) {
@@ -140,8 +138,8 @@ public class MainActivity extends FragmentActivity implements
 
 	@Override
 	protected void onDestroy() {
+		// EventBus.getDefault().unregister(this);// 反注册EventBus
 		super.onDestroy();
-		EventBus.getDefault().unregister(this);// 反注册EventBus
 	}
 
 	@Override

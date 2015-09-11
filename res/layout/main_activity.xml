@@ -21,6 +21,11 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1" />
+        <FrameLayout
+            android:id="@android:id/tabcontent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="0" />
         <TabWidget
             android:id="@android:id/tabs"
             android:layout_width="match_parent"
@@ -37,27 +42,27 @@
             android:orientation="horizontal" >
             <RadioButton
                 android:id="@+id/rb_news"
-                style="@style/maintabt"
+                style="@style/MainTab"
                 android:drawableTop="@drawable/icon_1_n"
                 android:text="@string/news" />
             <RadioButton
                 android:id="@+id/rb_lessons"
-                style="@style/maintabt"
+                style="@style/MainTab"
                 android:drawableTop="@drawable/icon_0_n"
                 android:text="@string/lessons" />
             <RadioButton
                 android:id="@+id/rb_agent"
-                style="@style/maintabt"
+                style="@style/MainTab"
                 android:drawableTop="@drawable/icon_2_n"
                 android:text="@string/agent" />
             <RadioButton
                 android:id="@+id/rb_schools"
-                style="@style/maintabt"
+                style="@style/MainTab"
                 android:drawableTop="@drawable/icon_3_n"
                 android:text="@string/schools" />
             <RadioButton
                 android:id="@+id/rb_self"
-                style="@style/maintabt"
+                style="@style/MainTab"
                 android:drawableTop="@drawable/icon_4_n"
                 android:text="@string/self" />
         </RadioGroup>

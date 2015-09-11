@@ -5,7 +5,7 @@ import com.j256.ormlite.table.DatabaseTable;
 
 /**
  * @author Luke
- * @date 2015Äê6ÔÂ15ÈÕÏÂÎç3:10:45
+ * @date 2015ï¿½ï¿½6ï¿½ï¿½15ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½3:10:45
  * @description
  */
 @DatabaseTable(tableName = "tb_user")
@@ -14,4 +14,6 @@ public class User {
 	public int id;
 	@DatabaseField
 	public String name;
+	@DatabaseField
+	public String headPic;
 }

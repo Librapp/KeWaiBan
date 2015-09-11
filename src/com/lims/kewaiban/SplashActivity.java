@@ -18,6 +18,7 @@ import com.lims.kewaiban.util.SPUtil;
 public class SplashActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		setContentView(R.layout.splash_activity);
 		if (SPUtil.getInstance(this).getInt("category", 0) == 0) {
 			new AlertDialog.Builder(this)
 					.setItems(R.array.category, new OnClickListener() {
@@ -34,7 +35,8 @@ public class SplashActivity extends Activity {
 									MainActivity.class));
 						}
 					}).create().show();
-		}
+		} else
+			startActivity(new Intent(SplashActivity.this, MainActivity.class));
 		super.onCreate(savedInstanceState);
 	}
 }

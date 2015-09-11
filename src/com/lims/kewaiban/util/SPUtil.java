@@ -55,7 +55,9 @@ public class SPUtil {
 				edit.remove(key[i]);
 			}
 		}
+		;
 		edit.commit();
+		;
 	}
 
 	public void putLong(String key, Long value) {
